@@ -1,0 +1,73 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task</title>
+</head>
+<style>
+    nav {
+        background: lightblue;
+        width: 500px;
+        font-size: 40px;
+        font-family: Verdana;
+
+        
+    }
+
+    .container {
+        background: white;
+        width: 500px;
+        border-radius: 150px;
+    }
+
+    div {
+        display: grid;
+    }
+
+    li {
+        display: inline;
+        list-style: none;
+    
+        
+    }
+
+    p {
+        color: lightblue;
+    }
+
+    .button {
+        float: right;    
+        border-radius: 3px;
+        width: 70px;
+        color: rgb(1, 1, 1);
+        background: lightblueblue;
+        l: none;
+    }
+
+    .create {
+        background-color: lightblue;
+    }
+
+    input:submit {
+        border-radius: 6px;
+        width: 100px;
+        height: 10px;
+    }
+
+
+
+
+</style>
+<body>
+    <nav>
+        <a href="{% url 'home' %}">Task</a>
+        <form method="GET" action="{% url 'task_home' %}">
+            <input type="text" placeholder="search..." name="q"/>
+        </form>    
+        <p>{% for message in messages %}
+            {{ message }}
+        {% endfor %}
+        <hr>
+    </nav>
+</body>
+</html>
