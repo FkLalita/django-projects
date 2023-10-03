@@ -13,14 +13,13 @@
                 </ol>
             </div>
 
-
         {% endfor %}
         <button class="create"><p><a href="{% url 'task_create' %}">Create</a></button>
 
         <a href="{% url 'logout' %}">logout</a>
 
     {% else %}
-        
+    
     <button class="create"><p><a href="{% url 'signuppage' %}">Signup</a></button>
     <button class="create"><p><a href="{% url 'loginpage' %}">login</a></button>
     
