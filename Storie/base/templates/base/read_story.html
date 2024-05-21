@@ -1,0 +1,15 @@
+
+
+
+{% block content %}
+
+
+<title>Storie - 
+    {% block title %} {{ story.title }} {% endblock %}
+</title>
+    <div>
+        <h4>{{ story.title }} <span class="author_name">{{ story.author }}</span></h4>
+        <p style="font-family: Arial;">{{ story.content }}  </p> 
+    </div>    
+
+{% endblock content %}

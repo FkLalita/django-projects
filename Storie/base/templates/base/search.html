@@ -1,0 +1,15 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<title>{% block title %} Search {% endblock %}</title>
+
+{% if query %}
+    <h2>Results for "{{ query }}"</h2>
+
+    <ul>
+      {% for stories in story %}
+      <li><a href="{% url 'read_story' stories.id %}">{{ stories.title }}</a></li> 
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

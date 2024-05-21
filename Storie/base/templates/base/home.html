@@ -1,0 +1,30 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+<div>
+    <h2>Storie</h2>
+    <p>Read, read, reread</p>
+</div>
+
+
+<h1>Search</h1>
+<form method="get" action="{% url 'search' %}">
+  <input type="text" name="q" placeholder="Search...">
+  <button type="submit">Search</button>
+</form>
+
+<a href="{% url 'latest' %}">latest</a>
+
+{% for stories in story %}
+
+    <div>
+        <h4>{{ stories.title }}  <span class="author_name">{{ stories.author }}</span></h4>
+        <img src="{{ stories.story_pic.url }}" alt="story_pic">
+        <p>{{ stories.description }}  </p> <button class="btn btn-primary" ><a href="{% url 'read_story' stories.pk %}">Read full story</a></button>
+        <hr>
+    </div>    
+
+{% endfor %}
+
+{% endblock%}

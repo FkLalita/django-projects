@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+
+{% for stories in story %}
+
+    <div>
+        <h4>{{ stories.title }}  <span class="author_name">{{ stories.author }}</span></h4>
+        <img src="{{ stories.story_pic.url }}" alt="story_pic">
+        <p>{{ stories.description }}  </p> <button class="btn btn-primary" ><a href="{% url 'read_story' stories.pk %}">Read full story</a></button>
+        <hr>
+    </div>    
+
+{% endfor %}
+
+{% endblock%}
