@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+  <h1>Your Ride Details</h1>
+  <p><strong>Pickup Location:</strong> {{ location }}</p>
+  <p><strong>Destination:</strong> {{ ride.destination }}</p>
+  <p><strong>Ride Type:</strong> {{ ride.ride_type }}</p>
+  <p><strong>Status:</strong> {{ ride.status }}</p>
+  {% if ride.driver %}
+    <p><strong>Driver:</strong> {{ ride.driver.first_name }} {{ ride.driver.last_name }}</p>
+    <p><strong>Driver Phone:</strong> {{ ride.driver.phone_number }}</p>
+  {% endif %}
+  {% if ride.cost %}
+    <p><strong>Cost:</strong> {{ ride.cost }}</p>
+  {% endif %}
+  <p>Book a ride and get moving.</p>
+  <a href="{% url 'book_ride' %}" class="btn btn-primary">Book a Ride</a>
+{% endblock %}

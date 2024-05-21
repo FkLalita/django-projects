@@ -1,0 +1,17 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+  <h1>Your Locations</h1>
+  <p><a href="{% url 'add_location' %}">Add a new location</a></p>
+  <ul>
+    {% for location in locations %}
+      <li>
+        <strong>{{ location.name }}</strong><br>
+        {{ location.address }}<br>
+        <a href="{% url 'edit_location' location.id %}">Edit</a>
+      </li>
+    {% empty %}
+      <li>No locations found.</li>
+    {% endfor %}
+  </ul>
+{% endblock %}

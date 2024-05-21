@@ -1,0 +1,18 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+  <h1>Driver Details</h1>
+  <p><strong>First Name:</strong> {{ driver.first_name }}</p>
+  <p><strong>Last Name:</strong> {{ driver.last_name }}</p>
+  <p><strong>Phone Number:</strong> {{ driver.phone_number }}</p>
+  <p><strong>License Number:</strong> {{ driver.license_number }}</p>
+  {% if driver.rides %}
+    <h2>Rides</h2>
+    <ul>
+      {% for ride in driver.rides %}
+        <li>{{ ride.pickup_location }} to {{ ride.destination }} ({{ ride.status }})</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+  <p><a href="{% url 'edit_driver' driver.id %}">Edit Driver Details</a></p>
+{% endblock %}

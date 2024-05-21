@@ -1,0 +1,25 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+  <h1>Add Driver</h1>
+  <form method="post">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="first_name">First Name:</label>
+      <input type="text" id="first_name" name="first_name" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="last_name">Last Name:</label>
+      <input type="text" id="last_name" name="last_name" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="phone_number">Phone Number:</label>
+      <input type="text" id="phone_number" name="phone_number" class="form-control">
+    </div>
+    <div class="form-group">
+      <label for="license_number">License Number:</label>
+      <input type="text" id="license_number" name="license_number" class="form-control">
+    </div>
+    <button type="submit" class="btn btn-primary">Add Driver</button>
+  </form>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+  <h1>Welcome to your Kabby profile, {{ user.username }}!</h1>
+  <p>Here are your details:</p>
+  <ul>
+    <li>First Name: {{ user.first_name }}</li>
+    <li>Last Name: {{ user.last_name }}</li>
+    <li>Email: {{ user.email }}</li>
+    <li>Phone Number: {{ user.mobile_number }}</li>
+
+  </ul>
+  <a href="{% url 'edit_profile' %}" class="btn btn-primary">Edit Profile</a>
+{% endblock %}
