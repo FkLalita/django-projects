@@ -1,0 +1,29 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+  <div class="card mb-3">
+    <div class="card-header">
+      <h5>{{ answer.question.title }}</h5>
+    </div>
+    <div class="card-body">
+      <p>{{ answer.content }}</p>
+      <p>Submitted by {{ answer.author.username }} on {{ answer.created_date }}</p>
+      <hr>
+      <h5>Comments</h5>
+      <ul>
+        {% for comment in answer.comments.all %}
+        <li>{{ comment.content }} - {{ comment.author.username }} on {{ comment.created_date }}</li>
+        {% empty %}
+        <li>No comments yet</li>
+        {% endfor %}
+      </ul>
+      <hr>
+      <h5>Add a comment</h5>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

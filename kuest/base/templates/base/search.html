@@ -1,0 +1,14 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+
+
+  {% if query %}
+    <h2>Results</h2>
+    <ul>
+      {% for result in questions %}
+        <li><a href="{% url 'question_detail' result.id %}">{{ result.title }}</a></li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+{% endblock %}

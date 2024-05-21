@@ -1,0 +1,20 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<title>{% block title %} Kuest {% endblock %}</title>
+  <h1>Welcome to Kuest!</h1>
+  <p>Here are some of the latest questions:</p>
+  <h1>Search</h1>
+  <form method="get" action="{% url 'search' %}">
+    <input type="text" name="q" placeholder="Search...">
+    <button type="submit">Search</button>
+  <ul>
+    {% for question in questions %}
+      <li><a href="{% url 'question_detail' pk=question.id %}">{{ question.title }} by {{ question.author }}       {{ question.date_posted }}</a></li>
+    {% empty %}
+      <li>There are no questions yet.</li>
+    {% endfor %}
+  </ul>
+  <p><a href="{% url 'ask_question' %}">Ask Question</a></p>
+
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+  <h1>{{ question.title }}</h1>
+  <p>{{ question.text }}</p>
+
+  <h2>Answers</h2>
+  {% if answers %}
+    <ul>
+    {% for answer in answers %}
+      <li>{{ answer.text }} by {{ answer.author }}</li>
+      <ul>
+  
+    {% endfor %}
+    </ul>
+  {% else %}
+    <p>No answers yet.</p>
+  {% endif %}
+
+  <a href="{% url 'answer_question' question.id %}">Answer this question</a>
+{% endblock %}

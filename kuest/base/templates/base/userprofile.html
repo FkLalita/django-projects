@@ -1,0 +1,38 @@
+{% extends 'base/base.html' %}
+
+{% block content %}
+<title>{% block title %} Profile {% endblock %}</title>
+  <h1>User Profile</h1>
+
+
+
+  <ul>
+    <p>{{ user.profile_images.url }}</p>
+    <img src="{{ profile.profile_image.url }}" alt="Profile pic">
+ 
+    <li>UserName: {{ user.username }}</li>
+    <li>Email: {{ user.email }}</li> 
+    <li>Bio: {{ user.bio }}</li>
+    <li></li>
+  </ul>
+  <a href="{% url 'edit_profile' %}">Edit Profile</a>
+
+  <h2>Questions</h2>
+  <ul>
+    {% for questions in question %}
+      <li><a href="{% url 'question_detail' questions.id %}">{{ questions.description }}</a></li>
+    {% empty %}
+      <p>No questions found.</p>
+    {% endfor %}
+  
+  </ul>
+
+  <h2>Answers</h2>
+  <ul>
+    {% for answer in answers %}
+      <li>{{ answer.text }} to {{ answer.question.title }}</li>
+    {% empty %}
+      <p>No answers found.</p>
+    {% endfor %}
+  </ul>
+{% endblock %}
