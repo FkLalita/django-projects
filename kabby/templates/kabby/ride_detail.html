@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Ride Request</h2>
+  <dl class="row">
+    <dt class="col-sm-3">Passenger:</dt>
+    <dd class="col-sm-9">{{ ride.passenger }}</dd>
+
+    <dt class="col-sm-3">Pickup Address:</dt>
+    <dd class="col-sm-9">{{ ride.pickup_address }}</dd>
+
+    <dt class="col-sm-3">Dropoff Address:</dt>
+    <dd class="col-sm-9">{{ ride.dropoff_address }}</dd>
+
+    <dt class="col-sm-3">Pickup Time:</dt>
+    <dd class="col-sm-9">{{ ride.pickup_time }}</dd>
+
+    <dt class="col-sm-3">Driver:</dt>
+    <dd class="col-sm-9">
+      {% if ride.driver %}
+        {{ ride.driver }}
+      {% else %}
+        <em>No driver assigned yet.</em>
+      {% endif %}
+    </dd>
+  </dl>
+  {% if user.is_driver and not ride.driver %}
+    <form method="post" action="{% url 'taxi:ride_assign' pk=ride.id %}">
+      {% csrf_token %}
+      <button type="submit" class="btn btn-success">Assign to Me</button>
+    </form>
+  {% endif %}
+{% endblock %}

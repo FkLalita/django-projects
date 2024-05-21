@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <h2>Ride Requests</h2>
+  {% if ride_requests %}
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Passenger</th>
+          <th>Pickup Address</th>
+          <th>Dropoff Address</th>
+          <th>Pickup Time</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for ride in ride_requests %}
+          <tr>
+            <td>{{ ride.passenger }}</td>
+            <td>{{ ride.pickup_address }}</td>
+            <td>{{ ride.dropoff_address }}</td>
+            <td>{{ ride.pickup_time }}</td>
+            <td>
+              {% if user.is_driver %}
+                {% if ride.driver %}
+                  <p>Assigned to {{ ride.driver }}</p>
+                {% else %}
+                  <form method="post" action="{% url 'taxi:ride_assign' pk=ride.id %}">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-success">Assign to Me</button>
+                  </form>
+                {% endif %}
+              {% endif %}
+            </td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>No ride requests found.</p>
+  {% endif %}
+{% endblock %}
